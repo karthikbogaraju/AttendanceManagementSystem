@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - Attendance System{% endblock %}
+
+{% block content %}
+<div class="card text-center">
+    <div class="card-body">
+        <h2>{{ title }}</h2>
+        <p style="margin: 20px 0; font-size: 16px;">{{ message }}</p>
+        <a href="{{ link_url }}" class="btn">{{ link_text }}</a>
+    </div>
+</div>
+{% endblock %}

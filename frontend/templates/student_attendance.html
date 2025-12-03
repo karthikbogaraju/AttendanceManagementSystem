@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Attendance - {{ course_name }}{% endblock %}
+
+{% block content %}
+<h1> Your Attendance - {{ course_name }}</h1>
+
+{% if records %}
+<div class="table-responsive">
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.date }}</td>
+                <td>
+                    {% if record.status == 'Present' %}
+                        <span style="color: green; font-weight: bold;">✓ Present</span>
+                    {% elif record.status == 'Absent' %}
+                        <span style="color: red; font-weight: bold;">✗ Absent</span>
+                    {% else %}
+                        <span style="color: orange; font-weight: bold;">~ Excused</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div style="background: rgba(255,255,255,0.95); padding: 16px; border-radius: 8px; margin-top: 20px;">
+    <h4> Attendance Summary</h4>
+    {% set present = records | selectattr('status', 'equalto', 'Present') | list | length %}
+    {% set absent = records | selectattr('status', 'equalto', 'Absent') | list | length %}
+    {% set excused = records | selectattr('status', 'equalto', 'Excused') | list | length %}
+    <p><strong>✓ Present:</strong> {{ present }}</p>
+    <p><strong>✗ Absent:</strong> {{ absent }}</p>
+    <p><strong>~ Excused:</strong> {{ excused }}</p>
+    <p><strong>Total:</strong> {{ records | length }}</p>
+</div>
+
+{% else %}
+<div class="alert alert-info">
+    No attendance records yet for this course.
+</div>
+{% endif %}
+
+<div class="divider"></div>
+
+<a href="{{ url_for('student_dashboard', student_id=student_id) }}" class="btn btn-secondary">
+    ← Back to Dashboard
+</a>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Attendance - {{ date }}{% endblock %}
+
+{% block content %}
+<h1> Edit Attendance for {{ date }}</h1>
+
+<form method="POST" class="card">
+    <h3>Update Status</h3>
+    
+    {% if attendance_records %}
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in attendance_records %}
+                <tr>
+                    <td>{{ record.name }}</td>
+                    <td>
+                        <select name="att_{{ record.id }}" style="max-width: 150px;">
+                            <option value="Present" {% if record.status == 'Present' %}selected{% endif %}>Present</option>
+                            <option value="Absent" {% if record.status == 'Absent' %}selected{% endif %}>Absent</option>
+                            <option value="Excused" {% if record.status == 'Excused' %}selected{% endif %}>Excused</option>
+                        </select>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-warning">
+        No attendance records for this date.
+    </div>
+    {% endif %}
+
+    <input type="hidden" name="date" value="{{ date }}" />
+    <input type="hidden" name="teacher_id" value="{{ teacher_id }}" />
+    <input type="hidden" name="course_id" value="{{ course_id }}" />
+
+    <button type="submit" style="width: 100%; margin-top: 16px;">Save Changes</button>
+</form>
+
+<a href="{{ url_for('teacher_attendance', teacher_id=teacher_id, course_id=course_id) }}" class="btn btn-secondary" style="width: 100%; margin-top: 12px;">
+    Back to Attendance
+</a>
+{% endblock %}

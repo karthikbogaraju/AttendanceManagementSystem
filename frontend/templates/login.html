@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Attendance Management System - Login{% endblock %}
+
+{% block content %}
+<div class="login-container" id="teacher-box">
+    <h2>Teacher Login</h2>
+    <form method="POST" action="{{ url_for('teacher_login') }}">
+        <div class="form-group">
+            <input type="email" name="email" placeholder="Email" required />
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" placeholder="Password" required />
+        </div>
+        <button type="submit">Login as Teacher</button>
+    </form>
+    
+    <div class="switch" onclick="showStudent()">Switch to Student Login</div>
+
+    <div class="signup-links">
+        <a class="link" href="{{ url_for('teacher_signup') }}">Create Teacher Account</a><br>
+    </div>
+</div>
+
+<div class="login-container" id="student-box" style="display:none;">
+    <h2>Student Login</h2>
+    <form method="POST" action="{{ url_for('student_login') }}">
+        <div class="form-group">
+            <input type="email" name="email" placeholder="Email" required />
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" placeholder="Password" required />
+        </div>
+        <button type="submit">Login as Student</button>
+    </form>
+    
+    <div class="switch" onclick="showTeacher()">Switch to Teacher Login</div>
+
+    <div class="signup-links">
+        <a class="link" href="{{ url_for('student_signup') }}">Create Student Account</a><br>
+    </div>
+</div>
+
+<script>
+    function showStudent() {
+        document.getElementById("teacher-box").style.display = "none";
+        document.getElementById("student-box").style.display = "block";
+    }
+    function showTeacher() {
+        document.getElementById("teacher-box").style.display = "block";
+        document.getElementById("student-box").style.display = "none";
+    }
+</script>
+{% endblock %}
