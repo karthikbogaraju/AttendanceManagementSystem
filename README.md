@@ -20,6 +20,21 @@ A full-stack **Flask + SQLite Attendance Management System** supporting Teacher 
 │── README.md
 ```
 
+
+## Use Case Diagram
+![Use Case Diagram](https://github.com/karthikbogaraju/AttendanceManagementSystem/blob/main/diagrams/use%20case%20diagram%20.png)
+
+---
+
+## Database Diagram
+![ER Diagram](https://github.com/karthikbogaraju/AttendanceManagementSystem/blob/main/diagrams/database%20Diagram.svg)
+
+---
+
+## System Architecture Diagram
+![Architecture Diagram](https://github.com/karthikbogaraju/AttendanceManagementSystem/blob/main/diagrams/system%20architecture.jpg)
+---
+
 ---
 
 ## Features
