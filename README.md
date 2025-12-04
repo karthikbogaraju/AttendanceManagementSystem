@@ -22,22 +22,29 @@ A full-stack **Flask + SQLite Attendance Management System** supporting Teacher 
 
 
 ## Use Case Diagram
+
+This diagram shows the major functions of the system and the interactions between Teacher and Student with different system operations like login, signup, marking attendance, and viewing attendance.
 ![Use Case Diagram](https://github.com/karthikbogaraju/AttendanceManagementSystem/blob/main/diagrams/use%20case%20diagram%20.png)
 
 ---
-This diagram shows the major functions of the system and the interactions between Teacher and Student with different system operations like login, signup, marking attendance, and viewing attendance.
+
 
 ## Database Diagram
+
+This diagram shows the main tables used in the Attendance Management System and how they are connected.
+Teachers, Students, and Courses are the core tables.
+The bridge tables (teacher_courses and student_courses) connect teachers/students to courses.
+The attendance table stores each student’s attendance record for each course.
+
 ![ER Diagram](https://github.com/karthikbogaraju/AttendanceManagementSystem/blob/main/diagrams/database%20Diagram.svg)
 
 ---
 
 ## System Architecture Diagram
-![Architecture Diagram](https://github.com/karthikbogaraju/AttendanceManagementSystem/blob/main/diagrams/system%20architecture.jpg)
-
----
 
 This diagram explains how the Attendance Management System works internally. It shows the interaction between the browser (Teacher/Student UI), the Flask backend (routes, controllers, templates), and the database layer where attendance and user data are stored.
+
+![Architecture Diagram](https://github.com/karthikbogaraju/AttendanceManagementSystem/blob/main/diagrams/system%20architecture.jpg)
 
 ---
 
